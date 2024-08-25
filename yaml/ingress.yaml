@@ -1,0 +1,53 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    # arn 값 수정 필요
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:992382441622:certificate/8a6dfecb-6f4f-4893-8b31-62b6ef170011
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-2016-08
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: wonjong.shop
+      http: 
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: index-service
+              port:
+                number: 80
+        - path: /login
+          pathType: Prefix
+          backend:
+            service:
+              name: login-service
+              port:
+                number: 80
+        - path: /join
+          pathType: Prefix
+          backend:
+            service:
+              name: join-service
+              port:
+                number: 80
+        - path: /menu
+          pathType: Prefix
+          backend:
+            service:
+              name: menu-service
+              port:
+                number: 80
+        - path: /mypage
+          pathType: Prefix
+          backend:
+            service:
+              name: mypage-service
+              port:
+                number: 80
