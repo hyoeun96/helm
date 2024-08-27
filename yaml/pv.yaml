@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nginx
+spec:
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: sc-nginx
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: fs-026cba3b23788e444 #EFS id값으로 수정필요

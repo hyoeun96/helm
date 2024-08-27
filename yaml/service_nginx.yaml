@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-index-service
+spec:
+  type: NodePort
+  clusterIP: 172.20.2.101
+  selector:
+    app: nginx
+    name: index
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30200
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-login-service
+spec:
+  type: NodePort
+  clusterIP: 172.20.2.102
+  selector:
+    app: nginx
+    name: login
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30201
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-join-service
+spec:
+  type: NodePort
+  clusterIP: 172.20.2.103
+  selector:
+    app: nginx
+    name: join
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30202
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-menu-service
+spec:
+  type: NodePort
+  clusterIP: 172.20.2.104
+  selector:
+    app: nginx
+    name: menu
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30203
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-mypage-service
+spec:
+  type: NodePort
+  clusterIP: 172.20.2.105
+  selector:
+    app: nginx
+    name: mypage
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30204
