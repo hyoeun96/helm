@@ -13,7 +13,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: enqn07.store
+    - host: www.enqn07.store
       http: 
         paths:
         - path: /
