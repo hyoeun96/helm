@@ -45,7 +45,7 @@ spec:
             matchLabels:
               app: tomcat
       containers:
-      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-index:v11.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-index:v12.0
         name: tomcat-index-deploy
         ports:
         - containerPort: 8080
@@ -54,11 +54,11 @@ spec:
           name: tomcat-efs
         resources:
           limits:
-            cpu: 250m
-            memory: 250Mi
+            cpu: 300m
+            memory: 300Mi
           requests:
-            cpu: 250m
-            memory: 250Mi
+            cpu: 300m
+            memory: 300Mi
         livenessProbe:
           httpGet:
             path: /
@@ -121,7 +121,7 @@ spec:
             matchLabels:
               app: tomcat
       containers:
-      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-menu:v11.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-menu:v12.0
         name: tomcat-menu-deploy
         ports:
         - containerPort: 8080
@@ -130,11 +130,11 @@ spec:
           name: tomcat-efs
         resources:
           limits:
-            cpu: 250m
-            memory: 250Mi
+            cpu: 300m
+            memory: 300Mi
           requests:
-            cpu: 250m
-            memory: 250Mi
+            cpu: 300m
+            memory: 300Mi
         livenessProbe:
           httpGet:
             path: /menu.jsp
@@ -196,7 +196,7 @@ spec:
             matchLabels:
               app: tomcat
       containers:
-      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-login:v11.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-login:v12.0
         name: tomcat-login-deploy
         ports:
         - containerPort: 8080
@@ -205,10 +205,10 @@ spec:
           name: tomcat-efs
         resources:
           limits:
-            cpu: 250m
+            cpu: 200m
             memory: 250Mi
           requests:
-            cpu: 250m
+            cpu: 200m
             memory: 250Mi
         livenessProbe:
           httpGet:
@@ -271,7 +271,7 @@ spec:
             matchLabels:
               app: tomcat
       containers:
-      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-join:v11.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-join:v12.0
         name: tomcat-join-deploy
         ports:
         - containerPort: 8080
@@ -280,10 +280,10 @@ spec:
           name: tomcat-efs
         resources:
           limits:
-            cpu: 250m
+            cpu: 200m
             memory: 250Mi
           requests:
-            cpu: 250m
+            cpu: 200m
             memory: 250Mi
         livenessProbe:
           httpGet:
@@ -348,7 +348,7 @@ spec:
             matchLabels:
               app: tomcat
       containers:
-      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-mypage:v11.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-mypage:v12.0
         name: tomcat-mypage-deploy
         ports:
         - containerPort: 8080
@@ -357,11 +357,11 @@ spec:
           name: tomcat-efs
         resources:
           limits:
-            cpu: 250m
-            memory: 250Mi
+            cpu: 300m
+            memory: 300Mi
           requests:
-            cpu: 250m
-            memory: 250Mi
+            cpu: 300m
+            memory: 300Mi
         livenessProbe:
           httpGet:
             path: /mypage.jsp
