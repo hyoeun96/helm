@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-index-service
+spec:
+  type: ClusterIP
+  clusterIP: 172.20.12.101
+  selector:
+    app: tomcat
+    name: index
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-menu-service
+spec:
+  type: ClusterIP
+  clusterIP: 172.20.12.104
+  selector:
+    app: tomcat
+    name: menu
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-login-service
+spec:
+  type: ClusterIP
+  clusterIP: 172.20.12.102
+  selector:
+    app: tomcat
+    name: login
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-join-service
+spec:
+  type: ClusterIP
+  clusterIP: 172.20.12.103
+  selector:
+    app: tomcat
+    name: join
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-mypage-service
+spec:
+  type: ClusterIP
+  clusterIP: 172.20.12.105
+  selector:
+    app: tomcat
+    name: mypage
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
