@@ -59,15 +59,6 @@ spec:
           requests:
             cpu: 300m
             memory: 300Mi
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8080
-          initialDelaySeconds: 60
-          periodSeconds: 60
-          timeoutSeconds: 20
-          successThreshold: 1
-          failureThreshold: 3
       volumes:
         - name: tomcat-efs
           persistentVolumeClaim:
@@ -135,15 +126,6 @@ spec:
           requests:
             cpu: 300m
             memory: 300Mi
-        livenessProbe:
-          httpGet:
-            path: /menu.jsp
-            port: 8080
-          initialDelaySeconds: 15
-          periodSeconds: 60
-          timeoutSeconds: 60
-          successThreshold: 1
-          failureThreshold: 3
       volumes:
         - name: tomcat-efs
           persistentVolumeClaim:
@@ -210,15 +192,6 @@ spec:
           requests:
             cpu: 200m
             memory: 250Mi
-        livenessProbe:
-          httpGet:
-            path: /login.jsp
-            port: 8080
-          initialDelaySeconds: 15
-          periodSeconds: 60
-          timeoutSeconds: 60
-          successThreshold: 1
-          failureThreshold: 3
       volumes:
         - name: tomcat-efs
           persistentVolumeClaim:
@@ -285,15 +258,6 @@ spec:
           requests:
             cpu: 200m
             memory: 250Mi
-        livenessProbe:
-          httpGet:
-            path: /join.jsp
-            port: 8080
-          initialDelaySeconds: 15
-          periodSeconds: 60
-          timeoutSeconds: 60
-          successThreshold: 1
-          failureThreshold: 3
       volumes:
         - name: tomcat-efs
           persistentVolumeClaim:
@@ -362,15 +326,6 @@ spec:
           requests:
             cpu: 300m
             memory: 300Mi
-        livenessProbe:
-          httpGet:
-            path: /mypage.jsp
-            port: 8080
-          initialDelaySeconds: 60
-          periodSeconds: 60
-          timeoutSeconds: 20
-          successThreshold: 1
-          failureThreshold: 3
       volumes:
         - name: tomcat-efs
           persistentVolumeClaim:
