@@ -54,11 +54,11 @@ spec:
           name: tomcat-efs
         resources:
           limits:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 250m
+            memory: 250Mi
           requests:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 250m
+            memory: 250Mi
         livenessProbe:
           httpGet:
             path: /
@@ -130,11 +130,11 @@ spec:
           name: tomcat-efs
         resources:
           limits:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 250m
+            memory: 250Mi
           requests:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 250m
+            memory: 250Mi
         livenessProbe:
           httpGet:
             path: /menu.jsp
@@ -205,11 +205,11 @@ spec:
           name: tomcat-efs
         resources:
           limits:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 250m
+            memory: 250Mi
           requests:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 250m
+            memory: 250Mi
         livenessProbe:
           httpGet:
             path: /login.jsp
@@ -280,11 +280,11 @@ spec:
           name: tomcat-efs
         resources:
           limits:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 250m
+            memory: 250Mi
           requests:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 250m
+            memory: 250Mi
         livenessProbe:
           httpGet:
             path: /join.jsp
@@ -357,11 +357,11 @@ spec:
           name: tomcat-efs
         resources:
           limits:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 250m
+            memory: 250Mi
           requests:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 250m
+            memory: 250Mi
         livenessProbe:
           httpGet:
             path: /mypage.jsp
