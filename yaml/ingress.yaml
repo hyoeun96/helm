@@ -7,13 +7,13 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     # arn 값 수정 필요
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:637423521175:certificate/710369ba-594f-468a-8f31-de1cc995f471
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:975049917890:certificate/a4d8adc1-3e2a-4238-9ed8-6a224a5dc41a
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-2016-08
 spec:
   ingressClassName: alb
   rules:
-    - host: leesh.shop
+    - host: enqn07.store
       http: 
         paths:
         - path: /
