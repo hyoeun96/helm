@@ -10,7 +10,7 @@ metadata:
   annotations:
     kubernetes.io/change-cause: first_version
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -50,7 +50,7 @@ spec:
             matchLabels:
               app: nginx
       containers:
-      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/nginx-index:v1.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-nginx-index:v16.0
         name: nginx-index-deploy
         ports:
         - containerPort: 80
@@ -79,7 +79,7 @@ metadata:
   annotations:
     kubernetes.io/change-cause: first_version
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -119,7 +119,7 @@ spec:
             matchLabels:
               app: nginx
       containers:
-      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/nginx-menu:v1.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-nginx-menu:v12.0
         name: nginx-menu-deploy
         ports:
         - containerPort: 80
@@ -148,7 +148,7 @@ metadata:
   annotations:
     kubernetes.io/change-cause: first_version
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -188,7 +188,7 @@ spec:
             matchLabels:
               app: nginx-login-deploy
       containers:
-      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/nginx-login:v1.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-nginx-login:v12.0
         name: login
         ports:
         - containerPort: 80
@@ -217,7 +217,7 @@ metadata:
   annotations:
     kubernetes.io/change-cause: first_version
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -257,7 +257,7 @@ spec:
             matchLabels:
               app: nginx
       containers:
-      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/nginx-join:v1.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-nginx-join:v12.0
         name: nginx-join-deploy
         ports:
         - containerPort: 80
@@ -287,7 +287,7 @@ metadata:
   annotations:
     kubernetes.io/change-cause: first_version
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -327,7 +327,7 @@ spec:
             matchLabels:
               app: nginx
       containers:
-      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/nginx-mypage:v1.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-nginx-mypage:v12.0
         name: nginx-mypage-deploy
         ports:
         - containerPort: 80
