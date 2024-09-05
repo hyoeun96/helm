@@ -49,9 +49,6 @@ spec:
         name: tomcat-index-deploy
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - mountPath: "/opt/tomcat/webapps/ROOT/data"
-          name: tomcat-efs
         resources:
           limits:
             cpu: 300m
@@ -68,10 +65,6 @@ spec:
           timeoutSeconds: 20
           successThreshold: 1
           failureThreshold: 3
-      volumes:
-        - name: tomcat-efs
-          persistentVolumeClaim:
-            claimName: efs-claim
 
 ---
 apiVersion: apps/v1
@@ -125,9 +118,6 @@ spec:
         name: tomcat-menu-deploy
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - mountPath: "/opt/tomcat/webapps/ROOT/data"
-          name: tomcat-efs
         resources:
           limits:
             cpu: 300m
@@ -144,10 +134,7 @@ spec:
           timeoutSeconds: 60
           successThreshold: 1
           failureThreshold: 3
-      volumes:
-        - name: tomcat-efs
-          persistentVolumeClaim:
-            claimName: efs-claim
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -200,9 +187,6 @@ spec:
         name: tomcat-login-deploy
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - mountPath: "/opt/tomcat/webapps/ROOT/data"
-          name: tomcat-efs
         resources:
           limits:
             cpu: 200m
@@ -219,10 +203,6 @@ spec:
           timeoutSeconds: 60
           successThreshold: 1
           failureThreshold: 3
-      volumes:
-        - name: tomcat-efs
-          persistentVolumeClaim:
-            claimName: efs-claim
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -275,9 +255,6 @@ spec:
         name: tomcat-join-deploy
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - mountPath: "/opt/tomcat/webapps/ROOT/data"
-          name: tomcat-efs
         resources:
           limits:
             cpu: 200m
@@ -294,10 +271,6 @@ spec:
           timeoutSeconds: 60
           successThreshold: 1
           failureThreshold: 3
-      volumes:
-        - name: tomcat-efs
-          persistentVolumeClaim:
-            claimName: efs-claim
 
 
 ---
@@ -352,9 +325,6 @@ spec:
         name: tomcat-mypage-deploy
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - mountPath: "/opt/tomcat/webapps/ROOT/data"
-          name: tomcat-efs
         resources:
           limits:
             cpu: 300m
@@ -371,8 +341,5 @@ spec:
           timeoutSeconds: 20
           successThreshold: 1
           failureThreshold: 3
-      volumes:
-        - name: tomcat-efs
-          persistentVolumeClaim:
-            claimName: efs-claim
+
           
