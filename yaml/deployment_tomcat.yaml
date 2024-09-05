@@ -5,7 +5,7 @@ metadata:
   annotations:
     kubernetes.io/change-cause: first_version
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: tomcat
@@ -45,7 +45,7 @@ spec:
             matchLabels:
               app: tomcat
       containers:
-      - image: chae45/aaa:v1.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-index:v12.0
         name: tomcat-index-deploy
         ports:
         - containerPort: 8080
@@ -74,7 +74,7 @@ metadata:
   annotations:
     kubernetes.io/change-cause: first_version
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: tomcat
@@ -114,7 +114,7 @@ spec:
             matchLabels:
               app: tomcat
       containers:
-      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/tomcat-menu:v1.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-menu:v12.0
         name: tomcat-menu-deploy
         ports:
         - containerPort: 8080
@@ -143,7 +143,7 @@ metadata:
   annotations:
     kubernetes.io/change-cause: first_version
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: tomcat
@@ -183,7 +183,7 @@ spec:
             matchLabels:
               app: tomcat
       containers:
-      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/tomcat-login:v1.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-login:v12.0
         name: tomcat-login-deploy
         ports:
         - containerPort: 8080
@@ -211,7 +211,7 @@ metadata:
   annotations:
     kubernetes.io/change-cause: first_version
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: tomcat
@@ -251,7 +251,7 @@ spec:
             matchLabels:
               app: tomcat
       containers:
-      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/tomcat-join:v1.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-join:v12.0
         name: tomcat-join-deploy
         ports:
         - containerPort: 8080
@@ -272,7 +272,6 @@ spec:
           successThreshold: 1
           failureThreshold: 3
 
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -281,7 +280,7 @@ metadata:
   annotations:
     kubernetes.io/change-cause: first_version
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: tomcat
@@ -321,7 +320,7 @@ spec:
             matchLabels:
               app: tomcat
       containers:
-      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/tomcat-mypage:v1.0
+      - image: 975049917890.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-tomcat-mypage:v12.0
         name: tomcat-mypage-deploy
         ports:
         - containerPort: 8080
