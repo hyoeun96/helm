@@ -1,0 +1,378 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-index
+  annotations:
+    kubernetes.io/change-cause: first_version
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomcat
+      name: index
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+  template:
+    metadata:
+      labels:
+        app: tomcat
+        name: index
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: name
+                  operator: In
+                  values:
+                  - index
+                - key: app
+                  operator: In
+                  values:
+                  - tomcat
+              topologyKey: topology.kubernetes.io/zone
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: tomcat
+      containers:
+      - image: chae45/aaa:v1.0
+        name: tomcat-index-deploy
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: "/opt/tomcat/webapps/ROOT/data"
+          name: tomcat-efs
+        resources:
+          limits:
+            cpu: 300m
+            memory: 300Mi
+          requests:
+            cpu: 300m
+            memory: 300Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 60
+          timeoutSeconds: 20
+          successThreshold: 1
+          failureThreshold: 3
+      volumes:
+        - name: tomcat-efs
+          persistentVolumeClaim:
+            claimName: efs-claim
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-menu
+  annotations:
+    kubernetes.io/change-cause: first_version
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomcat
+      name: menu
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+  template:
+    metadata:
+      labels:
+        app: tomcat
+        name: menu
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 90
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: name
+                  operator: In
+                  values:
+                  - menu
+                - key: app
+                  operator: In
+                  values:
+                  - tomcat
+              topologyKey: topology.kubernetes.io/zone
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: tomcat
+      containers:
+      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/tomcat-menu:v1.0
+        name: tomcat-menu-deploy
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: "/opt/tomcat/webapps/ROOT/data"
+          name: tomcat-efs
+        resources:
+          limits:
+            cpu: 300m
+            memory: 300Mi
+          requests:
+            cpu: 300m
+            memory: 300Mi
+        livenessProbe:
+          httpGet:
+            path: /menu.jsp
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 60
+          timeoutSeconds: 60
+          successThreshold: 1
+          failureThreshold: 3
+      volumes:
+        - name: tomcat-efs
+          persistentVolumeClaim:
+            claimName: efs-claim
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-login
+  annotations:
+    kubernetes.io/change-cause: first_version
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomcat
+      name: login
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: tomcat
+        name: login
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 80
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: name
+                  operator: In
+                  values:
+                  - login
+                - key: app
+                  operator: In
+                  values:
+                  - tomcat
+              topologyKey: topology.kubernetes.io/zone
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: tomcat
+      containers:
+      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/tomcat-login:v1.0
+        name: tomcat-login-deploy
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: "/opt/tomcat/webapps/ROOT/data"
+          name: tomcat-efs
+        resources:
+          limits:
+            cpu: 200m
+            memory: 250Mi
+          requests:
+            cpu: 200m
+            memory: 250Mi
+        livenessProbe:
+          httpGet:
+            path: /login.jsp
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 60
+          timeoutSeconds: 60
+          successThreshold: 1
+          failureThreshold: 3
+      volumes:
+        - name: tomcat-efs
+          persistentVolumeClaim:
+            claimName: efs-claim
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-join
+  annotations:
+    kubernetes.io/change-cause: first_version
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomcat
+      name: join
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: tomcat
+        name: join
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 80
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: name
+                  operator: In
+                  values:
+                  - join
+                - key: app
+                  operator: In
+                  values:
+                  - tomcat
+              topologyKey: topology.kubernetes.io/zone
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: tomcat
+      containers:
+      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/tomcat-join:v1.0
+        name: tomcat-join-deploy
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: "/opt/tomcat/webapps/ROOT/data"
+          name: tomcat-efs
+        resources:
+          limits:
+            cpu: 200m
+            memory: 250Mi
+          requests:
+            cpu: 200m
+            memory: 250Mi
+        livenessProbe:
+          httpGet:
+            path: /join.jsp
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 60
+          timeoutSeconds: 60
+          successThreshold: 1
+          failureThreshold: 3
+      volumes:
+        - name: tomcat-efs
+          persistentVolumeClaim:
+            claimName: efs-claim
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-mypage
+  annotations:
+    kubernetes.io/change-cause: first_version
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomcat
+      name: mypage
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: tomcat
+        name: mypage
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 80
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: name
+                  operator: In
+                  values:
+                  - mypage
+                - key: app
+                  operator: In
+                  values:
+                  - tomcat
+              topologyKey: topology.kubernetes.io/zone
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: tomcat
+      containers:
+      - image: 637423521175.dkr.ecr.ap-northeast-2.amazonaws.com/tomcat-mypage:v1.0
+        name: tomcat-mypage-deploy
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: "/opt/tomcat/webapps/ROOT/data"
+          name: tomcat-efs
+        resources:
+          limits:
+            cpu: 300m
+            memory: 300Mi
+          requests:
+            cpu: 300m
+            memory: 300Mi
+        livenessProbe:
+          httpGet:
+            path: /mypage.jsp
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 60
+          timeoutSeconds: 20
+          successThreshold: 1
+          failureThreshold: 3
+      volumes:
+        - name: tomcat-efs
+          persistentVolumeClaim:
+            claimName: efs-claim
+          
