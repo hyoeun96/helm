@@ -21,7 +21,7 @@ AWS EKS 를 활용하여 WEB, WAS, DB로 구성된 3-Tier 컨테이너 웹서비
 ## 🗂PAGE
 --PAGE
 ![index.jpg](images/index.jpeg) ![rollingupdate.jpg](images/rollingupdate.jpg)
-![signup.jpg](images/signup.jpg) ![login.jpg](images/login.jpg)
-![menu.jpg](images/menu.jpg) 
+![signup.jpg](images/signup.jpg) ![login.JPG](images/login.JPG)
+![menu.JPG](images/menu.JPG) 
 
 
